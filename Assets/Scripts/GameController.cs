@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
     public static GameController instance;
-
-    public GameObject menu;
-    public GameObject gameField;
 
     public GameObject player;
     public Transform startPoint;
@@ -16,11 +14,10 @@ public class GameController : MonoBehaviour {
 
     void Awake() {
         instance = this;
+        //DontDestroyOnLoad(this);
     }
 
     public void StartGame() {
-        menu.SetActive(false);
-        gameField.SetActive(true);
         GenerateMaze(new SimpleGenerate());
         UpdateFogMask();
         player.transform.position = startPoint.position;
@@ -31,8 +28,8 @@ public class GameController : MonoBehaviour {
     }
 
     public void EndGame() {
-        menu.SetActive(true);
-        gameField.SetActive(false);
+        Debug.Log("end");
+        SceneManager.LoadScene(0);
     }
 
     private void GenerateMaze(IGenerateMazeStrategy strategy) { }

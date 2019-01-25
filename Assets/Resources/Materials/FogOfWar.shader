@@ -17,13 +17,13 @@
 		#pragma surface surf Lambert alpha
 		#pragma target 3.0
 		
-		fixed4 LightingNoLighting(SurfaceOutput s, fixed3 lightDir, float aten)
-		{
-			fixed4 color;
-			color.rgb = s.Albedo;
-			color.a = s.Alpha;
-			return color;
-		}
+		//fixed4 LightingNoLighting(SurfaceOutput s, fixed3 lightDir, float aten)
+		//{
+	//		fixed4 color;
+	//		color.rgb = s.Albedo;
+	//		color.a = s.Alpha;
+	//		return color;
+	//	}
 
 		fixed4 _Color;
 		sampler2D _MainTex;
@@ -36,7 +36,7 @@
 
 		void surf (Input IN, inout SurfaceOutput o) 
 		{
-		        half4 baseColor1 = tex2D (_MainTex, IN.uv_MainTex + float2(-_Blur, 0));
+		    half4 baseColor1 = tex2D (_MainTex, IN.uv_MainTex + float2(-_Blur, 0));
 			half4 baseColor2 = tex2D (_MainTex, IN.uv_MainTex + float2(0, -_Blur));
 			half4 baseColor3 = tex2D (_MainTex, IN.uv_MainTex + float2(_Blur, 0));
 			half4 baseColor4 = tex2D (_MainTex, IN.uv_MainTex + float2(0, _Blur));

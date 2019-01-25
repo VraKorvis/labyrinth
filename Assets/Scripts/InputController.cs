@@ -9,7 +9,7 @@ public class InputController : MonoBehaviour {
     private Vector2 _dest;
 
     [SerializeField] [Range(0, 1)] private float lerpConst;
-    [SerializeField] [Range(0, 1)] private float speed = 10f;
+    [SerializeField] [Range(0, 10)] private float speed = 5f;
 
     void Awake() {
         _characterRB = GetComponent<Rigidbody2D>();
@@ -19,8 +19,6 @@ public class InputController : MonoBehaviour {
 
     private void Move() {
         Vector2 p = Vector2.MoveTowards(transform.position, _dest, Time.deltaTime * speed);
-
-
         if (Input.GetKey(KeyCode.RightArrow)) {
             _dest = (Vector2) _transform.position + Vector2.right;
         }
@@ -40,8 +38,10 @@ public class InputController : MonoBehaviour {
         _characterRB.MovePosition(p);
     }
 
-    void Update() {
-        Move();
+    public void MoveAndroid() {
+        Vector2 p = Vector2.MoveTowards(transform.position, _dest, Time.deltaTime * speed);
+        _characterRB.MovePosition(p);
+        _dest = (Vector2) _transform.position + (Vector2) _transform.up;
     }
 
     void FixedUpdate() {
@@ -50,6 +50,12 @@ public class InputController : MonoBehaviour {
         //Vector2 movement = new Vector2(xAxisRaw, yAxisRaw);
         ////characterRB.velocity = movement;
         //characterRB.velocity = Vector2.Lerp(characterRB.velocity, movement*speed, lerpConst);
+//#if UNITY_EDITOR
+//        Move();
+//#elif UNITY_ANDROID
+//              MoveAndroid();
+//#endif
+        MoveAndroid();
     }
 }
 
