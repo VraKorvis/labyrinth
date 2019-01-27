@@ -775,7 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpConst: 0.513
-  speed: 1.5
+  speed: 1.7
 --- !u!50 &123710941
 Rigidbody2D:
   serializedVersion: 4
@@ -3727,7 +3727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterRB: {fileID: 123710941}
   _mazeField: {fileID: 749095905}
-  speedRot: 0.1
+  _horseSpeed: 2
 --- !u!50 &749095909
 Rigidbody2D:
   serializedVersion: 4

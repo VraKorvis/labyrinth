@@ -28,7 +28,6 @@ public class GameController : MonoBehaviour {
     }
 
     public void EndGame() {
-        Debug.Log("end");
         SceneManager.LoadScene(0);
     }
 
